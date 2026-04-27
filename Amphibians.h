@@ -41,6 +41,7 @@ public:
     void MakeSound() override;
 };
 
+// Похідний клас від Salamander
 class Axolotl : public Salamander {
 protected:
     bool regeneration;
@@ -51,7 +52,7 @@ public:
     void RegrowLimbs();
 };
 
-// 4. Похідний клас від Frog (Квакші)
+// Похідний клас від Frog (Квакші)
 class TreeFrog : public Frog {
 protected:
     string skinColor;
@@ -61,7 +62,7 @@ public:
     void Climb();
 };
 
-// 5. Похідний клас від TreeFrog (Дереволази)
+// Похідний клас від TreeFrog (Дереволази)
 class PoisonDartFrog : public TreeFrog {
 private:
     int toxicityLevel; // Рівень токсичності від 1 до 10
