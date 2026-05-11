@@ -6,7 +6,6 @@
 
 using namespace std;
 
-// Base Class
 class Amphibian {
 protected:
     string species;
