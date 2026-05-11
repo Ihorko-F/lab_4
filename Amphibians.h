@@ -3,11 +3,10 @@
 
 #include <iostream>
 #include <string>
-#include <vector>
 
 using namespace std;
 
-// Батьківський клас
+// Base Class
 class Amphibian {
 protected:
     string species;
@@ -15,63 +14,46 @@ protected:
 public:
     Amphibian();
     Amphibian(string spec, bool poison);
+    virtual ~Amphibian(); // Destructor
     
     virtual void MakeSound(); 
-    
     void DisplayInfo();
     void DisplayInfo(string habitat);
 };
 
-// Похідний клас (Жаби)
-class Frog : public Amphibian {
+// Branch 1: Frog (Virtual inheritance to solve diamond problem)
+class Frog : virtual public Amphibian {
 protected:
     double jumpHeight;
 public:
     Frog();
     Frog(string spec, bool poison, double jump);
+    ~Frog();
     void MakeSound() override;
-    void Jump();
 };
 
-// Похідний клас (Саламандри)
-class Salamander : public Amphibian {
+// Branch 2: Salamander (Virtual inheritance)
+class Salamander : virtual public Amphibian {
+protected:
+    bool canRegenerate;
 public:
     Salamander();
-    Salamander(string spec, bool poison);
+    Salamander(string spec, bool poison, bool regen);
+    ~Salamander();
     void MakeSound() override;
 };
 
-// Похідний клас від Salamander
-class Axolotl : public Salamander {
-protected:
-    bool regeneration;
-public:
-    Axolotl ();
-    Axolotl (string spec, bool poison, bool regeneration);
-    void MakeSound() override;
-    void RegrowLimbs();
-};
-
-// Похідний клас від Frog (Квакші)
-class TreeFrog : public Frog {
-protected:
-    string skinColor;
-public:
-    TreeFrog(string spec, bool poison, double jump, string color);
-    void MakeSound() override;
-    void Climb();
-};
-
-// Похідний клас від TreeFrog (Дереволази)
-class PoisonDartFrog : public TreeFrog {
+// Diamond Class: FrogSalamander (Multiple Inheritance)
+class FrogSalamander : public Frog, public Salamander {
 private:
-    int toxicityLevel; // Рівень токсичності від 1 до 10
+    string hybridName;
 public:
-    PoisonDartFrog(string spec, double jump, string color, int tox);
+    FrogSalamander(string name);
+    ~FrogSalamander();
     void MakeSound() override;
-    void Warn();
+    void ShowHybridStatus();
 };
 
-int runProgram ();
+int runProgram();
 
 #endif
