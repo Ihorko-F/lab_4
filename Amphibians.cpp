@@ -1,6 +1,6 @@
 #include "Amphibians.h"
 
-// --- Amphibian ---
+//Amphibian
 Amphibian::Amphibian() : species("Generic Amphibian"), isPoisonous(false) {
     cout << "[Constructor] Amphibian created" << endl;
 }
@@ -17,21 +17,21 @@ void Amphibian::DisplayInfo(string habitat) {
     cout << species << " lives in: " << habitat << endl;
 }
 
-// --- Frog ---
+//Frog
 Frog::Frog() : Amphibian("Frog", false), jumpHeight(1.0) {
     cout << "[Constructor] Frog branch initialized" << endl;
 }
 Frog::~Frog() { cout << "[Destructor] Frog destroyed" << endl; }
 void Frog::MakeSound() { cout << "Frog says: Ribbit!" << endl; }
 
-// --- Salamander ---
+//Salamander
 Salamander::Salamander() : Amphibian("Salamander", true), canRegenerate(true) {
     cout << "[Constructor] Salamander branch initialized" << endl;
 }
 Salamander::~Salamander() { cout << "[Destructor] Salamander destroyed" << endl; }
 void Salamander::MakeSound() { cout << "Salamander hisses..." << endl; }
 
-// --- FrogSalamander (The Diamond Class) ---
+//FrogSalamander
 FrogSalamander::FrogSalamander(string name) : hybridName(name) {
     cout << "[Constructor] Hybrid Frog-Salamander '" << hybridName << "' created!" << endl;
 }
@@ -48,20 +48,18 @@ void FrogSalamander::ShowHybridStatus() {
 int runProgram() {
     cout << "--- Testing Diamond Inheritance ---" << endl;
     
-    // Creating the hybrid object
-    // Notice the order of constructors: Amphibian -> Frog -> Salamander -> FrogSalamander
     FrogSalamander* myPet = new FrogSalamander("Glitchy");
     
     cout << "\n--- Functionality Check ---" << endl;
-    myPet->DisplayInfo();       // Inherited from Amphibian (only one instance due to virtual)
-    myPet->MakeSound();         // Overridden in Hybrid
-    myPet->ShowHybridStatus();  // Specific to Hybrid
+    myPet->DisplayInfo();
+    myPet->MakeSound();
+    myPet->ShowHybridStatus();
     
     cout << "\n--- Testing Overloading ---" << endl;
-    myPet->DisplayInfo("Lab Laboratory"); // Overloaded method
+    myPet->DisplayInfo("Lab Laboratory");
     
     cout << "\n--- Deleting Object ---" << endl;
-    delete myPet; // Check the reverse order of destructors
+    delete myPet;
 
     return 0;
 }

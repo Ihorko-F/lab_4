@@ -21,7 +21,6 @@ public:
     void DisplayInfo(string habitat);
 };
 
-// Branch 1: Frog (Virtual inheritance to solve diamond problem)
 class Frog : virtual public Amphibian {
 protected:
     double jumpHeight;
@@ -32,7 +31,6 @@ public:
     void MakeSound() override;
 };
 
-// Branch 2: Salamander (Virtual inheritance)
 class Salamander : virtual public Amphibian {
 protected:
     bool canRegenerate;
@@ -43,7 +41,6 @@ public:
     void MakeSound() override;
 };
 
-// Diamond Class: FrogSalamander (Multiple Inheritance)
 class FrogSalamander : public Frog, public Salamander {
 private:
     string hybridName;
