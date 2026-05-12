@@ -47,14 +47,25 @@ public:
     void MakeSound() override { cout << "Newt squeaks!" << endl; }
 };
 
-class FrogSalamander : public Frog, public Salamander, public Newt {
-private:
+class FrogSalamander : public Frog, public Salamander {
+protected:
     string hybridName;
 public:
     FrogSalamander(string name);
-    ~FrogSalamander();
+    virtual ~FrogSalamander();
     void MakeSound() override;
     void ShowHybridStatus();
+};
+
+class TripleHybrid : public Frog, public Salamander, public Newt {
+private:
+    string name;
+public:
+    TripleHybrid(string n) : Amphibian("Triple", true), Frog(), Salamander(), Newt(), name(n) {
+        cout << "[Constructor] Triple Hybrid '" << name << "' created!" << endl;
+    }
+    ~TripleHybrid() { cout << "[Destructor] Triple Hybrid destroyed" << endl; }
+    void MakeSound() override { cout << name << " makes a triple mixed sound!" << endl; }
 };
 
 int runProgram();

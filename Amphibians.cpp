@@ -32,7 +32,7 @@ Salamander::~Salamander() { cout << "[Destructor] Salamander destroyed" << endl;
 void Salamander::MakeSound() { cout << "Salamander hisses..." << endl; }
 
 //FrogSalamander
-FrogSalamander::FrogSalamander(string name) : Amphibian("Hybrid", true), Frog(), Salamander(), Newt(), hybridName(name) {
+FrogSalamander::FrogSalamander(string name) : Amphibian("Hybrid", true), Frog(), Salamander(), hybridName(name) {
     cout << "[Constructor] Hybrid Frog-Salamander '" << hybridName << "' created!" << endl;
 }
 FrogSalamander::~FrogSalamander() { cout << "[Destructor] Hybrid destroyed" << endl; }
@@ -46,20 +46,16 @@ void FrogSalamander::ShowHybridStatus() {
 }
 
 int runProgram() {
-    cout << "--- Testing Diamond Inheritance ---" << endl;
-    
-    FrogSalamander* myPet = new FrogSalamander("Glitchy");
-    
-    cout << "\n--- Functionality Check ---" << endl;
-    myPet->DisplayInfo();
-    myPet->MakeSound();
-    myPet->ShowHybridStatus();
-    
-    cout << "\n--- Testing Overloading ---" << endl;
-    myPet->DisplayInfo("Lab Laboratory");
-    
-    cout << "\n--- Deleting Object ---" << endl;
-    delete myPet;
+    cout << "--- Structure 1-2-1 ---" << endl;
+    FrogSalamander* diamond = new FrogSalamander("Glitchy");
+    diamond->MakeSound();
+    delete diamond;
+
+    cout << "\n--- Structure 1-3-1 ---" << endl;
+    TripleHybrid* triple = new TripleHybrid("Chimera");
+    triple->MakeSound();
+    triple->DisplayInfo("Secret Lab");
+    delete triple;
 
     return 0;
 }
