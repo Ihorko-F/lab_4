@@ -4,7 +4,9 @@
 Amphibian::Amphibian() : species("Generic Amphibian"), isPoisonous(false) {
     cout << "[Constructor] Amphibian created" << endl;
 }
-Amphibian::Amphibian(string spec, bool poison) : species(spec), isPoisonous(poison) {}
+Amphibian::Amphibian(string spec, bool poison) : species(spec), isPoisonous(poison) {
+    cout << "[Constructor] Amphibian created" << endl;
+}
 Amphibian::~Amphibian() { cout << "[Destructor] Amphibian destroyed" << endl; }
 
 void Amphibian::MakeSound() { cout << species << " makes a sound." << endl; }
