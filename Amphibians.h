@@ -40,7 +40,14 @@ public:
     void MakeSound() override;
 };
 
-class FrogSalamander : public Frog, public Salamander {
+class Newt : virtual public Amphibian {
+public:
+    Newt() : Amphibian("Newt", false) { cout << "[Constructor] Newt branch initialized" << endl; }
+    ~Newt() { cout << "[Destructor] Newt destroyed" << endl; }
+    void MakeSound() override { cout << "Newt squeaks!" << endl; }
+};
+
+class FrogSalamander : public Frog, public Salamander, public Newt {
 private:
     string hybridName;
 public:

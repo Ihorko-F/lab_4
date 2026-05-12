@@ -32,7 +32,7 @@ Salamander::~Salamander() { cout << "[Destructor] Salamander destroyed" << endl;
 void Salamander::MakeSound() { cout << "Salamander hisses..." << endl; }
 
 //FrogSalamander
-FrogSalamander::FrogSalamander(string name) : hybridName(name) {
+FrogSalamander::FrogSalamander(string name) : Amphibian("Hybrid", true), Frog(), Salamander(), Newt(), hybridName(name) {
     cout << "[Constructor] Hybrid Frog-Salamander '" << hybridName << "' created!" << endl;
 }
 FrogSalamander::~FrogSalamander() { cout << "[Destructor] Hybrid destroyed" << endl; }
